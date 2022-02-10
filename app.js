@@ -63,6 +63,4 @@ app.listen(port, function () {
   console.log("Serving is running on port 3000");
 });
 
-// Mailchip Integration
 
-// API key e332faa6994024172f7839d26999cae1-us14
