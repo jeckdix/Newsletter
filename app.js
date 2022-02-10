@@ -2,12 +2,16 @@ const express = require("express");
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 const request = require("request");
 const { sendFile } = require("express/lib/response");
+require('dotenv').config()
 
 const app = express();
 let port = process.env.PORT;
 if (port == null || port == "") {
   port = 3000;
 };
+
+const apiKey = process.env.API_KEY;
+const server = process.env.SERVER; 
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
@@ -21,8 +25,8 @@ app.post("/", function (req, res) {
   const email = req.body.email;
 
   mailchimp.setConfig({
-    apiKey: "e332faa6994024172f7839d26999cae1-us14",
-    server: "us14",
+    apiKey: apiKey,
+    server: server,
   });
 
   const run = async () => {
